@@ -13,7 +13,11 @@ const moviesController = {
       const { movies, total } = await getAllMovis(req.query.limit, req.skip);
       const pagesCount = Math.ceil(total / req.query.limit)
       const currentPage = req.query.page;
-      const pages = paginate.getArrayPages(req)(pagesCount, pagesCount, currentPage)
+      const pages = paginate.getArrayPages(req)(
+        pagesCount,
+        pagesCount,
+        currentPage
+      )
 
       return res.status(200).json({
         ok: true,
@@ -21,7 +25,7 @@ const moviesController = {
           total,
           pagesCount,
           currentPage,
-          pages
+          pages,
         },
         data: movies,
       });
