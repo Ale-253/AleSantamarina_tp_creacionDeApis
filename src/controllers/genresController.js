@@ -3,7 +3,7 @@ const sequelize = db.sequelize;
 
 
 const genresController = {
-    'list': (req, res) => {
+    list: (req, res) => {
         db.Genre.findAll()
             .then(genres => {
                return res.status(200).json({
@@ -16,7 +16,7 @@ const genresController = {
             })
             .catch(error => console.log(error))
     },
-    'detail': (req, res) => {
+    detail: (req, res) => {
         db.Genre.findByPk(req.params.id)
         .then(genre => {
             return res.status(200).json({
