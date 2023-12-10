@@ -10,7 +10,7 @@ const { getAllMovis, getMovieById, createMovie, updateMovie, deleteMovie } = req
 const moviesController = {
   list: async (req, res) => {
     try {
-      const {keyword} = req.query
+      const { keyword } = req.query
       const { movies, total } = await getAllMovis(req.query.limit, req.skip, keyword);
       const pagesCount = Math.ceil(total / req.query.limit)
       const currentPage = req.query.page;
@@ -101,7 +101,9 @@ const moviesController = {
       return res.status(200).json({
         ok: true,
         msg: 'Pelicula actualizada con exito',
-        url: `${req.protocol}://${req.get('host')}/api/v1/movies/${req.params.id}`
+        url: `${req.protocol}://${req.get('host')}/api/v1/movies/${movieUpdated.id
+          }`,
+        data: movie
       });
 
     } catch (error) {

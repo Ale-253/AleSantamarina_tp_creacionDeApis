@@ -104,7 +104,7 @@ const createMovie = async (dataMovie, actors) => {
             })
         }
 
-        return getMovieById(newMovie.id)
+        return await getMovieById(id)
 
     } catch (error) {
         throw {
@@ -151,7 +151,7 @@ const updateMovie = async (id, dataMovie) => {
             })
         }
 
-        return null
+        return getMovieById(id)
 
     } catch (error) {
         throw {
@@ -175,10 +175,7 @@ const deleteMovie = async (id) => {
         const movie = await db.Movie.findByPk(id)
         await movie.destroy()
 
-        return {
-            id
-        }
-
+        return movie
 
     } catch (error) {
         throw {
