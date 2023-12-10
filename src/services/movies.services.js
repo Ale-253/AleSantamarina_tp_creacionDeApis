@@ -104,7 +104,7 @@ const createMovie = async (dataMovie, actors) => {
             })
         }
 
-        return newMovie
+        return getMovieById(newMovie.id)
 
     } catch (error) {
         throw {
