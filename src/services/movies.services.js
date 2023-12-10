@@ -175,7 +175,9 @@ const deleteMovie = async (id) => {
         const movie = await db.Movie.findByPk(id)
         await movie.destroy()
 
-        return null
+        return {
+            id
+        }
 
 
     } catch (error) {
